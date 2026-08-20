@@ -85,7 +85,7 @@ func (h *Handler) PenalizedFitness(fitness float64, genes []float64, generation 
 		factor := h.Coefficient * math.Sqrt(float64(generation+1))
 		return fitness - factor*violation*violation
 	case DeathPenalty:
-		return math.Inf(-1)
+		return applyDeath(fitness)
 	case Adaptive:
 		return fitness - h.Coefficient*violation*(1+math.Log1p(violation))
 	}
