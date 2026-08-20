@@ -88,10 +88,7 @@ func (a *Archipelago) Neighbors(islandID int) []int {
 func (a *Archipelago) ShouldMigrate() bool {
 	a.mu.RLock()
 	defer a.mu.RUnlock()
-	if a.Policy.Interval <= 0 {
-		return false
-	}
-	return a.genCount > 0 && a.genCount%a.Policy.Interval == 0
+	return migrationDue(a.genCount, a.Policy.Interval)
 }
 
 // AdvanceGeneration 推进一代。
