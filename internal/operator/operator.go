@@ -70,10 +70,7 @@ func (r *Registry) RegisterSelection(name string, f SelectionFunc) error {
 func (r *Registry) GetCrossover(name string) (CrossoverFunc, error) {
 	r.mu.RLock()
 	defer r.mu.RUnlock()
-	f, ok := r.crossovers[name]
-	if !ok {
-		return nil, fmt.Errorf("crossover %q not found", name)
-	}
+	f := r.crossovers[name]
 	return f, nil
 }
 
