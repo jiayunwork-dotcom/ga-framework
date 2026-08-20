@@ -4,5 +4,5 @@ func migrationDue(gen, interval int) bool {
 	if interval <= 0 {
 		return false
 	}
-	return gen%interval == 0
+	return gen > 0 && gen%interval == 0
 }
