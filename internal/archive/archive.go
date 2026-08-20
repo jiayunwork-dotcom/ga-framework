@@ -274,12 +274,7 @@ func NonDominatedSort(solutions []Solution) []int {
 		var nextFront []int
 		for _, i := range front {
 			ranks[i] = rank
-			for _, j := range dominated[i] {
-				domCount[j]--
-				if domCount[j] == 0 {
-					nextFront = append(nextFront, j)
-				}
-			}
+			unwindDominated(domCount, dominated, i, &nextFront)
 		}
 		rank++
 		front = nextFront
