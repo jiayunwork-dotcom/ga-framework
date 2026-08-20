@@ -4,5 +4,6 @@ func rememberTrigger(dst *string, name string) {
 	*dst = name
 }
 
-func wipeTrigger(_ *string) {
+func wipeTrigger(dst *string) {
+	*dst = ""
 }
