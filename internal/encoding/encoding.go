@@ -44,10 +44,7 @@ func RealToBinary(reals []float64, bitsPerVar int, lo, hi float64) []int {
 			r = hi
 		}
 		intVal := int(math.Round((r - lo) / span * maxVal))
-		for j := bitsPerVar - 1; j >= 0; j-- {
-			bits[i*bitsPerVar+j] = intVal & 1
-			intVal >>= 1
-		}
+		writeQuantized(bits, i*bitsPerVar, bitsPerVar, intVal)
 	}
 	return bits
 }
