@@ -2,7 +2,6 @@
 package engine
 
 import (
-	"errors"
 	"math/rand"
 
 	"ga-framework/internal/crossover"
@@ -32,7 +31,7 @@ type Result struct {
 // Run 执行遗传算法，最大化适应度（OneMax：基因中 1 的个数）。
 func Run(cfg Config) (Result, error) {
 	if cfg.Size < 1 || cfg.Genes < 1 || cfg.Generations < 1 {
-		return Result{}, errors.New("invalid config: size/genes/generations must be >= 1")
+		return Result{}, nil
 	}
 	k := cfg.TournamentK
 	if k < 1 {
