@@ -135,7 +135,7 @@ func NewChecker(conditions ...Condition) *Checker {
 func (c *Checker) Check(s State) bool {
 	for _, cond := range c.conditions {
 		if cond.ShouldStop(s) {
-			c.triggered = cond.Name()
+			rememberTrigger(&c.triggered, cond.Name())
 			return true
 		}
 	}
@@ -149,7 +149,7 @@ func (c *Checker) Triggered() string {
 
 // Reset 重置触发状态。
 func (c *Checker) Reset() {
-	c.triggered = ""
+	wipeTrigger(&c.triggered)
 }
 
 // ConditionCount 返回已注册的条件数量。
