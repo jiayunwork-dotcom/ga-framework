@@ -119,11 +119,7 @@ func WeightedSum(funcs []Func, weights []float64) Func {
 	return func(genes []float64) float64 {
 		total := 0.0
 		for i, f := range funcs {
-			w := 1.0
-			if i < len(weights) {
-				w = weights[i]
-			}
-			total += w * f(genes)
+			total += weightAt(weights, i) * f(genes)
 		}
 		return total
 	}
