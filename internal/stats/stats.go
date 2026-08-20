@@ -104,7 +104,7 @@ func (c *Collector) Stagnation() int {
 	best := c.records[n-1].BestFit
 	count := 0
 	for i := n - 2; i >= 0; i-- {
-		if c.records[i].BestFit >= best {
+		if stillStagnant(c.records[i].BestFit, best) {
 			count++
 		} else {
 			break
