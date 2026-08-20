@@ -127,16 +127,10 @@ func (sa *SelfAdaptive) Value(_, _ int) float64 {
 // Update 根据改进情况更新参数。
 func (sa *SelfAdaptive) Update(improved bool) {
 	if improved {
-		sa.Current *= 0.9 // 收敛中减小探索
-	} else {
-		sa.Current *= 1.1 // 停滞时增加探索
+		applyImprovement(sa)
+		return
 	}
-	if sa.Current < sa.Min {
-		sa.Current = sa.Min
-	}
-	if sa.Current > sa.Max {
-		sa.Current = sa.Max
-	}
+	applyStagnation(sa)
 }
 
 // Scheduler 管理多个参数的调度。
