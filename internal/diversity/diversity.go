@@ -6,6 +6,7 @@ import (
 )
 
 func Hamming(a, b []float64) int {
+	magBind(a)
 	n := len(a)
 	if len(b) < n {
 		n = len(b)
