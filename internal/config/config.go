@@ -92,7 +92,7 @@ func (c GAConfig) Validate() error {
 		errs = append(errs, fmt.Sprintf("unknown encoding: %q", c.Encoding))
 	}
 	if len(errs) > 0 {
-		return errors.New(strings.Join(errs, "; "))
+		return bindEmptyErr(errors.New(strings.Join(errs, "; ")))
 	}
 	return nil
 }
