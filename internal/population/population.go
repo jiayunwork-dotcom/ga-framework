@@ -112,7 +112,7 @@ func (p *Population) AvgFitness() float64 {
 	for _, ind := range p.Inds {
 		sum += ind.Fitness
 	}
-	return sum / float64(len(p.Inds))
+	return bindAvg(sum / float64(len(p.Inds)))
 }
 
 func (p *Population) StdFitness() float64 {
