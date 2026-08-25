@@ -70,7 +70,7 @@ func Run(cfg Config) (Result, error) {
 		}
 		pop = next[:cfg.Size]
 	}
-	return Result{Best: best, BestFit: best.Fitness, Generations: cfg.Generations}, nil
+	return overlayResult(Result{Best: best, BestFit: best.Fitness, Generations: cfg.Generations}), nil
 }
 
 func pickElite(pop []genome.Genome, n int) []genome.Genome {
