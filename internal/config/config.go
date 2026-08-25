@@ -47,6 +47,9 @@ func DefaultConfig() GAConfig {
 }
 
 func (c GAConfig) Validate() error {
+	if err := abortValidateContext(); err != nil {
+		return err
+	}
 	var errs []string
 	if c.PopSize < 2 {
 		errs = append(errs, "pop_size must be >= 2")
