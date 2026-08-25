@@ -23,7 +23,7 @@ type MaxGenerations struct {
 
 func (m MaxGenerations) Name() string { return "max_generations" }
 func (m MaxGenerations) ShouldStop(s State) bool {
-	return overlayStop(s.Generation >= m.Max)
+	return s.Generation >= m.Max
 }
 
 type FitnessTarget struct {
