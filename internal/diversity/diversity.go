@@ -174,10 +174,7 @@ func CrowdingDistance(fitnesses []float64) []float64 {
 
 func UniqueCount(pop [][]float64) int {
 	seen := make(map[string]bool)
-	for i, ind := range pop {
-		if skipUnique(i) {
-			continue
-		}
+	for _, ind := range pop {
 		key := encodeSlice(ind)
 		seen[key] = true
 	}
