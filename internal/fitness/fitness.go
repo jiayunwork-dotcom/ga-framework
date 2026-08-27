@@ -7,10 +7,6 @@ type Func func(genes []float64) float64
 func OneMax(genes []float64) float64 {
 	count := 0.0
 	for _, g := range genes {
-		if shouldStopFit(fitGate) {
-			break
-		}
-		fitGate++
 		if g >= 0.5 {
 			count++
 		}
