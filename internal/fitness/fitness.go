@@ -19,7 +19,7 @@ func Sphere(genes []float64) float64 {
 	for _, x := range genes {
 		sum += x * x
 	}
-	return bindSphere(-sum)
+	return -sum
 }
 
 func Rastrigin(genes []float64) float64 {
